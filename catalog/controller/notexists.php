@@ -1,5 +1,5 @@
 <?php
-class NotExists Extends Controller{
+class NotExistsController Extends Controller{
 
 	public function Index(){
 		$this->response->SetOutput('404.tpl');

@@ -57,7 +57,7 @@
 		*
 		*/
 		public function Get(){
-			return $this->current;
+			return $this->current . 'Controller';
 		}
 
 	}
