@@ -1,101 +1,65 @@
 <?php 
 
-	class path{
-		private $current, $type, $success, $to_load, $load, $user, $root;
+	class Path{
+		
+		private $load;
+		/*
+		*
+		* handles the loading of other classes eg: user, mvc classes, etc.
+		*
+		*/
 
-		function __construct($type, $load){
-			
-				$this->load = $load;
-				$this->user = $load->user();
-				$this->type = $type;
+		private $user;
+		/*
+		*
+		* basic user class.
+		*
+		*/
 
-				$this->root = 'example';
-				
-			
-			if($type == '404'){
+		private $current;
+		/*
+		*
+		* the current path.
+		*
+		*/
 
-				$this->type = 'view';
-				$this->current = '404';
-				$this->load_file($this->current);
-				$this->success = True;
+		function __construct($loadl, $root = ''){
+			$this->load = $load;
+			$this->user = $user;
 
+			if(isset($_GET['p']) && $_GET['p'] != ''){
+				$this->current = $_GET['p'];
 			} else {
-
-				if($this->user->loggedin()){
-					if(!empty($_GET['p']) && $_GET['p']!=''){
-					
-						$this->current = $_GET['p'];
-
-					} else {
-						
-						$this->current = $this->root;
-
-					}
+				if($root != ''){
+					$this->current = $root;	
 				} else {
-					
-					$this->current = 'login';
+					$this->current = '404';
 				}
-
-				
-
-				if($this->file_exists($this->current)){
-					
-					$this->load_file($this->current);
-					$this->success = True;
-				
-				} else {
-					
-					$this->success = False;
-					return False;
-				
-				}
-
-			}
-		}
-
-		public function loaded(){
-
-			return $this->success;
-
-		}
-
-
-		private function file_exists($file){
-
-			// Check if file exists in its directory
-			
-			foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator('.')) as $filename){
-			
-			        if(strpos($filename, 'catalog/' . $this->type . '/' . $file) or $filename == 'catalog/' . $this->type . '/' . $filename . '.php'){
-			        	return true;
-			        }
-			
 			}
 
-			return false;
+			$this->Load();
+			
+
 		}
 
-		private function load_file($file){
-			
-			if($this->type!='view'){
-
-				require('catalog/' . $this->type . '/' . $file . '.php');
-			
+		private function Load(){
+			if(!file_exists('catalog/controller/' . $this->current . '.php')){
+				$this->current = 'notexists';
 			}
 
+			require('catalog/controller/' . $this->current . '.php');
 		}
 
-		public function load(){
-			
-			return 'catalog/' . $this->type . '/' . $this->current . '.php';
-		
+		/*
+		*
+		* Get()
+		* Returns the current controller file's path.
+		*
+		*/
+		public function Get(){
+			return $this->current;
 		}
 
-		public function get_Current(){
-		
-			return str_replace('-','',$this->current);
-		
-		}
 	}
 
 ?>

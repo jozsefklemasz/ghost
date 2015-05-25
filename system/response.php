@@ -1,5 +1,5 @@
 <?php
-final class response{
+final class Response{
 
 	public $ViewPath;
 

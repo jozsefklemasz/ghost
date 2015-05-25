@@ -5,4 +5,5 @@
 	define('DB_NAME', 'ajanlat');
 
 	define('SITENAME', 'Ghost');
+	define('ROOT', 'example');
 ?>

@@ -1,5 +1,5 @@
 <?php
-final class request{
+final class Request{
 
 	public $post, $get, $session;
 

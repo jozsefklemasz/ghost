@@ -24,27 +24,21 @@
 	
 	$site_title = SITENAME;
 	
-	$cPath = new path('controller', new Load);
-	if($cPath->loaded()){
-		$controllername = $cPath->get_current();
-		$$controllername = new $controllername(new Load, new request, new response);
-		$$controllername->index();
+	$path = new Path(new Load, ROOT);
+	
+	$controller = $path->Get();
+	$$controller = new $controller(new Load, new Request, new Response);
+	$$controller->index();
 
-
-		if($$controllername->View()){
-			$extractVars = $$controllername->data;
-			if(!empty($extractVars)){
-				extract($extractVars);	
-			}
-			
-			require('theme/main/head.php');
-			require($$controllername->GetView());
-			require('theme/main/footer.php');	
+	if($$controller->View()){
+		$extractVars = $$controller->data;
+		if(!empty($extractVars)){
+			extract($extractVars);	
 		}
-	} else {
-		$view = new path('404', new Load);
+		
 		require('theme/main/head.php');
-		require($view->load());
+		require($$controller->GetView());
 		require('theme/main/footer.php');	
 	}
+	
 ?>
