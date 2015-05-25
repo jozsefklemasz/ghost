@@ -10,7 +10,6 @@
   	<link rel="stylesheet" href="/system/font-awesome/css/font-awesome.min.css">
   	<link rel="stylesheet" href="/system/jq_ui/jquery-ui.min.css">
 	<script type="text/javascript" src="/js/jquery.js"></script>
-	<script type="text/javascript" src="/js/mouse-min.js"></script>
 	<script type="text/javascript" src="/system/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="/js/common.js"></script>
 	<script type="text/javascript" src="/system/jq_ui/jquery-ui.min.js"></script>
