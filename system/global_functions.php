@@ -1,10 +1,9 @@
 <?php 
-function in_array_r($needle, $haystack, $strict = false) {
-    foreach ($haystack as $item) {
-        if (($strict ? $item === $needle : $item == $needle) || (is_array($item) && in_array_r($needle, $item, $strict))) {
-            return true;
-        }
-    }
+// Declare functions that you want to use globally.2
+// Example function: Version()
 
-    return false;
+function Version(){
+
+	return 'Ghost framework V0.1 - 25. 05. 2015. 20:55';
+
 }

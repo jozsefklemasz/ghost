@@ -5,19 +5,19 @@ final class Request{
 
 	function __construct(){
 
-		if($_POST){
+		if(isset($_POST) && !empty($_POST)){
 			$this->post = $_POST;
 		} else {
 			$this->post = false;
 		}
 
-		if($_GET){
+		if(isset($_GET) && !empty($_GET)){
 			$this->get = $_GET;
 		} else {
 			$this->get = false;
 		}
 
-		if($_SESSION){
+		if(isset($_SESSION) && !empty($_SESSION)){
 			$this->session = $_SESSION;
 		} else {
 			$this->session = false;

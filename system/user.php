@@ -17,37 +17,8 @@ class user{
 		return;
 	}
 
-	public function loggedin(){
+	public function Loggedin(){
 		return $this->loggedin;
-	}
-
-	public function Create($data){
-		$sql = "INSERT INTO users VALUES(NULL, '" . $this->db->escape($data['reg_user']) . "', '" . $this->db->escape($data['reg_pass']) . "', '" . $this->db->escape($data['reg_anon']) . "')";
-	}
-
-	public function vote($type, $id){
-		if($this->loggedin){
-			
-			if($type == 'news'){
-				$sql = "SELECT vote FROM votes WHERE user_id='" . $this->id . "' AND news_id='" . $id . "'";
-				if($vote = $this->db->Out($sql)){
-					return $vote[0]['vote'];
-				} else {
-					return False;
-				}
-			} else {
-
-			}
-
-		}
-	}
-
-	public function get($vn){
-		if(isset($this->$vn)){
-			return $this->$vn;
-		} else {
-			return 'variable ' . $vn . ' not exists';
-		}
 	}
 
 	public function Login($data){
@@ -63,23 +34,12 @@ class user{
 		}
 	}
 
-	public function logout(){
+	public function Logout(){
 		session_start();
 		session_destroy();
 		header('Location: /');
 	}
 
-	public function name($id){
-		if($id){
-			$sql = "SELECT name FROM users WHERE id='" . $id . "'";
-			$user = $this->db->Out($sql);
-			if(!empty($user)){
-				return $user[0]['name'];
-			} else {
-				return 'Deleted user';
-			}
-		}
-	}
 }
 
 ?>
