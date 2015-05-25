@@ -1,1 +1,0 @@
-<h3 align="center">404 - Az oldal nem található!</h3>
