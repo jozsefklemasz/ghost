@@ -5,6 +5,11 @@ order allow,deny
 deny from all
 </files>
 
+<Files ~ "\.tpl$">
+Order allow,deny
+Deny from all
+</Files>
+
 RewriteBase /
 
 RewriteEngine On
