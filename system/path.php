@@ -43,11 +43,11 @@
 		}
 
 		private function Load(){
-			if(!file_exists('catalog/controller/' . $this->current . '.php')){
+			if(!file_exists('mvc/controller/' . $this->current . '.php')){
 				$this->current = 'notexists';
 			}
 
-			require('catalog/controller/' . $this->current . '.php');
+			require('mvc/controller/' . $this->current . '.php');
 		}
 
 		/*

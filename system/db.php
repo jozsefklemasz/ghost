@@ -1,8 +1,5 @@
 <?php
-	
-	/**
-	* DEFAULT DB CLASS
-	*/
+
 	class DB{
 		
 		private $conn, $insert_id;
@@ -12,7 +9,7 @@
 			$this->conn->set_charset('utf8');
 
 			if (mysqli_connect_errno()) {
-			    printf("Connect failed: %s\n", mysqli_connect_error());
+			    printf("Connection failed: %s\n", mysqli_connect_error());
 			    exit();
 			}
 		}
@@ -26,7 +23,7 @@
 				}
 				return $final;
 			} else {
-				echo $this->conn->error;
+				trigger_error($this->conn->error);
 				return False;
 			}
 		}
@@ -36,12 +33,12 @@
 				$this->insert_id = $this->conn->insert_id;
 				return True;
 			} else {
-				echo $this->conn->error;
+				trigger_error($this->conn->error);
 				return False;
 			}
 		}
 
-		public function last_id(){
+		public function Last_id(){
 			if(isset($this->insert_id)){
 				return $this->insert_id;
 			} else {
@@ -49,7 +46,7 @@
 			}
 		}
 
-		public function escape($string){
+		public function Escape($string){
 			return $this->conn->real_escape_string($string);
 		}
 	}

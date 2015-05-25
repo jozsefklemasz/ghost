@@ -4,7 +4,7 @@ final class Load{
 	
 	public function Model($model){
 
-		$file  = 'catalog/model/' . strtolower($model) . '.php';
+		$file  = 'mvc/model/' . strtolower($model) . '.php';
 		
 		$class = preg_replace('/[^a-zA-Z0-9]/', '', $model . 'Model');
 		
@@ -27,9 +27,9 @@ final class Load{
 
 		if(isset($_SESSION['language'])){
 			if($_SESSION['language'] != 'en'){
-				$file_en = 'catalog/language/en/' . strtolower($file) . '.php';	
+				$file_en = 'mvc/language/en/' . strtolower($file) . '.php';	
 			}
-			$file = 'catalog/language/' . $_SESSION['language'] . '/' . strtolower($file) . '.php';	
+			$file = 'mvc/language/' . $_SESSION['language'] . '/' . strtolower($file) . '.php';	
 			if(file_exists($file)){
 				include_once($file);
 				return $language;
@@ -43,7 +43,7 @@ final class Load{
 				}
 			}
 		} else {
-			$file_en = 'catalog/language/en/' . strtolower($file) . '.php';
+			$file_en = 'mvc/language/en/' . strtolower($file) . '.php';
 			if(file_exists($file_en)){
 				include_once($file_en);
 				return $language;
