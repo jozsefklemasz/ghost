@@ -1,1 +1,1 @@
-<h3 align="center">404 - Az oldal nem található!</h3>
+<h3 align="center">404 - The page you are looking for is not exists!</h3>

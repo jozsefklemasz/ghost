@@ -4,23 +4,17 @@
 		
 		private $load;
 		/*
-		*
 		* handles the loading of other classes eg: user, mvc classes, etc.
-		*
 		*/
 
 		private $user;
 		/*
-		*
 		* basic user class.
-		*
 		*/
 
 		private $current;
 		/*
-		*
 		* the current path.
-		*
 		*/
 
 		function __construct($loadl, $root = ''){
@@ -42,6 +36,12 @@
 
 		}
 
+		/*
+		* Load()
+		* Determines if the controller file exists, and then loads it.
+		* If the controller file not exists the basic 404 will be loaded.
+		*/
+
 		private function Load(){
 			if(!file_exists('mvc/controller/' . $this->current . '.php')){
 				$this->current = 'notexists';
@@ -51,10 +51,8 @@
 		}
 
 		/*
-		*
 		* Get()
 		* Returns the current controller file's path.
-		*
 		*/
 		public function Get(){
 			return $this->current . 'Controller';
