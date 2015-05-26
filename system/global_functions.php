@@ -1,9 +1,9 @@
 <?php 
-// Declare functions that you want to use globally.2
+// Declare functions that you want to use globally.
 // Example function: Version()
 
 function Version(){
 
-	return 'Ghost framework V0.1 - 25. 05. 2015. 20:55';
+	return 'Ghost framework 0.1';
 
 }
