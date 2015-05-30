@@ -45,7 +45,6 @@ The db subclass now runs on mysqli, wich will later be replaced with PDO.
 
 #Views
 
-The framework doesn't has any custom templating language at the moment. You can use both HTML and You have access to
-the data variables from the control layers, **apart from that, usage of PHP is not recommended within the View layer**.
+In the view files you can use `{blocks}`. You can create new blocks, simply place them in the `/mvc/view/theme/themename/` folder.
 
 **If you have any recommendations please email me at jozsefklemasz@gmail.com. Thank you!**
