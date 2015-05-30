@@ -7,13 +7,14 @@ class Controller
 	private $view;
 	public $data;
 	
-	function __construct($load, $request, $response){
+	function __construct($load, $request, $response, $theme){
 		$this->error = false;
 		$this->load = $load;
 		$this->user = $this->load->user();
 		$this->request = $request;
 		$this->response = $response;
 		$this->view = True;
+		$this->theme = $theme;
 	}
 
 	protected function Error(){

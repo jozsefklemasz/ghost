@@ -18,16 +18,17 @@
 	require('response.php'); // basic response class
 	require('controller.php'); // frame class for controllers
 	require('model.php'); // frame class for models
+	require('theme.php'); // main theme class
 
 	$user = new user(new Load);
 	$language = new language(new Load);
 	
-	$site_title = SITENAME;
-	
 	$path = new Path(new Load, ROOT);
+
+	$theme = new Theme();
 	
 	$controller = $path->Get();
-	$$controller = new $controller(new Load, new Request, new Response);
+	$$controller = new $controller(new Load, new Request, new Response, $theme);
 	$$controller->index();
 
 	if($$controller->View()){
@@ -35,10 +36,10 @@
 		if(!empty($extractVars)){
 			extract($extractVars);	
 		}
-		
-		require('theme/main/head.php');
-		require($$controller->GetView());
-		require('theme/main/footer.php');	
+
+		$output = $theme->Parse($$controller->GetView());
+		require($output);
+		unlink($output);
 	}
 	
 ?>
