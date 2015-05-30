@@ -23,8 +23,6 @@ final class Load{
 	}
 
 	public function Language($file){
-		
-
 		if(isset($_SESSION['language'])){
 			if($_SESSION['language'] != 'en'){
 				$file_en = 'mvc/language/en/' . strtolower($file) . '.php';	
@@ -52,14 +50,11 @@ final class Load{
 				exit;
 			}
 		}
-		
 	}
 
 	public function User(){
-
 		include_once('system/user.php');
 		return new user(new Load);
-
 	}
 
 	public function Database($server='', $user='', $password='', $db=''){
@@ -69,9 +64,6 @@ final class Load{
 		} else {
 			return new DB(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 		}
-		
-		
-
 	}
 
 	public function Mail(){

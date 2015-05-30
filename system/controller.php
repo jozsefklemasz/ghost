@@ -7,7 +7,7 @@ class Controller
 	private $view;
 	public $data;
 	
-	public function __construct($load, $request, $response){
+	function __construct($load, $request, $response){
 		$this->error = false;
 		$this->load = $load;
 		$this->user = $this->load->user();
