@@ -1,24 +1,23 @@
 <?php
-	ini_set("display_errors", "1");
+	require_once('config.php'); // Config file
+	ini_set("display_errors", ERROR_LEVEL);
 	error_reporting(E_ALL & ~E_NOTICE);
 
 	// Start session before anything happens
 	session_start();
 	
-	// Get basic system files
-	require('config.php'); // Config file
-	require('user.php'); // User class
-	require('language.php'); // Language class
-	require('path.php'); // Path class
-	require('global_functions.php'); // Global functions class
 
-	// Get the MVC classes
-	require('load.php'); // Loader class
-	require('request.php'); // basic request class
-	require('response.php'); // basic response class
-	require('controller.php'); // frame class for controllers
-	require('model.php'); // frame class for models
-	require('theme.php'); // main theme class
+	//Engine	
+	require_once('user.php');
+	require_once('language.php');
+	require_once('path.php');
+	require_once('global_functions.php');
+	require_once('load.php');
+	require_once('request.php');
+	require_once('response.php');
+	require_once('controller.php');
+	require_once('model.php');
+	require_once('theme.php');
 
 	$user = new user(new Load);
 	$language = new language(new Load);
@@ -38,8 +37,10 @@
 		}
 
 		$output = $theme->Parse($$controller->GetView());
-		require($output);
-		unlink($output);
+		if($output){
+			require($output);
+			unlink($output);	
+		}		
 	}
 	
 ?>

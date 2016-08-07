@@ -4,6 +4,6 @@
 
 function Version(){
 
-	return 'Ghost framework 0.1';
+	return 'Ghost framework';
 
 }

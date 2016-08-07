@@ -1,9 +1,13 @@
 <?php 
-	define('DB_SERVER', 'localhost');
-	define('DB_USER', 'root');
-	define('DB_PASS', 'localhost');
-	define('DB_NAME', 'ajanlat');
+	//MySql DB details
+	define('DB_SERVER', '');
+	define('DB_USER', '');
+	define('DB_PASS', '');
+	define('DB_NAME', '');
 
-	define('SITENAME', 'Ghost');
+	//root page name
 	define('ROOT', 'example');
+
+	//System config
+	define('ERROR_LEVEL', '1'); // 0 is disabled, use 1 for debugging
 ?>

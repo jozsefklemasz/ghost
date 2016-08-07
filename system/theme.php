@@ -43,11 +43,25 @@ final class Theme{
 
 	private function CreateOutput($content){
 		$output_file_path = 'system/temp/temp_output' . $this->GenerateSession() . '.php';
-		$output_file = fopen($output_file_path,'w');
-		fwrite($output_file,$content);
-		fclose($output_file);
+		
+		try {
+			$this->WriteThemeFile($output_file_path, $content);
+		} catch (Exception $e) {
+			echo "Can't open theme file for writing, check permissions.";
+			return false;
+		}
 
 		return $output_file_path;
+	}
+
+	private function WriteThemeFile($path, $content){
+		if($output_file = fopen($path,'w')){
+			fwrite($output_file,$content);
+			fclose($output_file);	
+		} else {
+			throw new Exception("Can't open theme file for writing.");
+		}
+		
 	}
 
 	private function GenerateSession(){

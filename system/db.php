@@ -4,11 +4,15 @@
 		
 		private $conn, $insert_id;
 
-		function __construct($server, $user, $pass, $name){
+		function __construct($server='', $user='', $pass='', $name=''){
+			if($server == '' || $user == '' || $pass == '' || $name == ''){
+				return false;
+			}
+
 			$this->conn = mysqli_connect($server, $user, $pass, $name);
 			$this->conn->set_charset('utf8');
 
-			if (mysqli_connect_errno()) {
+			if (mysqli_connect_errno()){
 			    printf("Connection failed: %s\n", mysqli_connect_error());
 			    exit();
 			}

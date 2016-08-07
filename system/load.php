@@ -12,10 +12,10 @@ final class Load{
 		$file  = 'mvc/model/' . strtolower($model) . '.php';
 		
 		if(empty($c_arr)){
-			$class = preg_replace('/[^a-zA-Z0-9]/', '', $controller . 'controller');
+			$class = preg_replace('/[^a-zA-Z0-9]/', '', $model . 'model');
 		} else {
 			$class = end($c_arr);
-			$class = preg_replace('/[^a-zA-Z0-9]/', '', $class . 'controller');
+			$class = preg_replace('/[^a-zA-Z0-9]/', '', $class . 'model');
 		}
 
 		
@@ -30,6 +30,8 @@ final class Load{
 			exit();
 						
 		}
+
+		$this->registry->NewModel($file);
 
 	}
 
