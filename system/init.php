@@ -5,7 +5,6 @@
 
 	// Start session before anything happens
 	session_start();
-	
 
 	//Engine	
 	require_once('user.php');
@@ -19,15 +18,17 @@
 	require_once('model.php');
 	require_once('theme.php');
 
-	$user = new user(new Load);
-	$language = new language(new Load);
-	
-	$path = new Path(new Load, ROOT);
+	$load = new Load($request, $response);
 
+	$user = new user($load);
+	$language = new language($load);
+	$path = new Path($load, ROOT);
 	$theme = new Theme();
+	$request = new Request();
+	$response = new Response();
 	
 	$controller = $path->Get();
-	$$controller = new $controller(new Load(new Request, new Response), new Request, new Response, $theme);
+	$$controller = new $controller($load, $request, $response, $theme);
 	$$controller->index();
 
 	if($$controller->View()){
