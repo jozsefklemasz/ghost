@@ -42,7 +42,7 @@
 			}
 		}
 
-		public function Last_id(){
+		public function GetLastId(){
 			if(isset($this->insert_id)){
 				return $this->insert_id;
 			} else {
