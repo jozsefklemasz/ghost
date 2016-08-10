@@ -5,11 +5,11 @@ html,body{
     width: 100%;
     height: 100%;
     overflow:hidden;
-    background: #4E6CFF;
+    background: #353535;
     font-size: 15pt;
 }
 h1{
 	text-align: center;
-	margin-top: 15%;
+	margin-top: 20%;
 	font-size: 30pt;
 }
