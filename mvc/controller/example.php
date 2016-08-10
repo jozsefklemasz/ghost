@@ -5,7 +5,7 @@ class ExampleController extends Controller{
 
 		$this->data['title'] = 'php_mvc_framework';
 		$this->response->SetOutput('example.tpl');
-	
+		
 	}
 
 }
