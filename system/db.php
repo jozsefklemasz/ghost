@@ -2,57 +2,61 @@
 
 	class DB{
 		
-		private $conn, $insert_id;
+		private $conn, $query, $results, $last_query;
 
 		function __construct($server='', $user='', $pass='', $name=''){
 			if($server == '' || $user == '' || $pass == '' || $name == ''){
 				return false;
 			}
 
-			$this->conn = mysqli_connect($server, $user, $pass, $name);
-			$this->conn->set_charset('utf8');
-
-			if (mysqli_connect_errno()){
-			    printf("Connection failed: %s\n", mysqli_connect_error());
-			    exit();
+			try{
+				$db_details = 'mysql:host=' . $server . ';dbname=' . $name . ';charset=utf8';
+				$this->conn = new PDO($db_details, $user, $pass);
+				$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			} catch(PDOException $e){
+				echo $e->getMessage();
+				die();
 			}
 		}
 
-		public function Out($sql){
-			$res = $this->conn->query($sql);
-			if($res->num_rows){
-				$final = array();
-				while($row = $res->fetch_array(MYSQLI_ASSOC)){
-					$final[] = $row;
-				}
-				return $final;
+		public function GetResults(){
+			return $this->results;
+		}
+
+		public function Prepare($sql){
+			try{
+				$this->query = $this->conn->prepare($sql);
+				$this->last_query = $sql;
+				return true;
+			} catch(PDOException $e){
+				echo $e->getMessage();
+				return false;
+				die();
+			}
+		}
+
+		public function Execute($execute_data = array()){
+			
+			try{
+				$this->query->execute();
+				$this->results = $this->query->fetchAll();
+			} catch(PDOException $e){
+				echo $e->getMessage();
+				return false;
+				die();
+			}
+
+		}
+
+		public function GetLastQuery(){
+			if($this->last_query != ''){
+				return $this->last_query;
 			} else {
-				trigger_error($this->conn->error);
-				return False;
+				return false;
 			}
 		}
 
-		public function In($sql){
-			if($this->conn->query($sql)){
-				$this->insert_id = $this->conn->insert_id;
-				return True;
-			} else {
-				trigger_error($this->conn->error);
-				return False;
-			}
-		}
 
-		public function GetLastId(){
-			if(isset($this->insert_id)){
-				return $this->insert_id;
-			} else {
-				return False;
-			}
-		}
 
-		public function Escape($string){
-			return $this->conn->real_escape_string($string);
-		}
 	}
-
 ?>
