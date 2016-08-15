@@ -99,24 +99,17 @@ final class Load{
 	}
 
 	public function User(){
-		include_once('system/user.php');
+		include_once('system/engine/user.php');
 		return new user(new Load);
 	}
 
 	public function Database($server='', $user='', $password='', $db=''){
-		include_once('system/db.php');
+		require_once('system/engine/db.php');
 		if($server!='' && $user!='' && $db!=''){
 			return new DB($server, $user, $password, $db);
 		} else {
 			return new DB(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 		}
-	}
-
-	public function Mail(){
-
-		include_once('system/load.php');
-		return new mail;
-
 	}
 	
 }
