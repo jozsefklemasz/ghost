@@ -1,5 +1,5 @@
 <?php
-class language{
+class Language{
 
 	private $load, $browser;
 

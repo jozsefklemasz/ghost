@@ -6,8 +6,6 @@ class ExampleController extends Controller{
 		$this->data['title'] = 'php_mvc_framework';
 		$this->response->SetOutput('example.tpl');
 		$this->load->model('example', $this);
-
-		echo $this->examplemodel->test();
 	}
 
 }

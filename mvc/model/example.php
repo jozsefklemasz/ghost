@@ -3,6 +3,6 @@
 class ExampleModel extends Model
 {
 	public function Test(){
-		return 'as';
+		return true;
 	}
 }
