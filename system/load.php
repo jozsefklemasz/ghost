@@ -7,22 +7,17 @@ final class Load{
 		$this->response = $response;
 	}
 	
-	public function Model($model){
+	public function Model($model, &$parentClass){
 
-		$file  = 'mvc/model/' . strtolower($model) . '.php';
-		
-		if(empty($c_arr)){
-			$class = preg_replace('/[^a-zA-Z0-9]/', '', $model . 'model');
-		} else {
-			$class = end($c_arr);
-			$class = preg_replace('/[^a-zA-Z0-9]/', '', $class . 'model');
-		}
-
+		$modelName = strtolower($model);
+		$modelClassName = $modelName . 'model';
+		$file  = 'mvc/model/' . $modelName . '.php';
+		$class = preg_replace('/[^a-zA-Z0-9]/', '', $modelClassName);
 		
 		if (file_exists($file)) { 
 
 			include_once($file);
-			return new $class(new Load);
+			$parentClass->$modelClassName = new $class(new Load);
 
 		} else {
 
@@ -30,8 +25,6 @@ final class Load{
 			exit();
 						
 		}
-
-		$this->registry->NewModel($file);
 
 	}
 
