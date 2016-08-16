@@ -47,6 +47,8 @@ Class Cookie{
 			foreach ($_COOKIE as $key => $value) {
 				$cookieList[$key] = $value;
 			}
+
+			$this->cookies = $cookieList;
 		} else {
 			$this->cookies = false;
 		}

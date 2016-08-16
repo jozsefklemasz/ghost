@@ -20,6 +20,7 @@ class DB{
 	}
 
 	public function GetResults(){
+		$this->results = $this->query->fetchAll();
 		return $this->results;
 	}
 
@@ -38,8 +39,7 @@ class DB{
 	public function Execute($execute_data = array()){
 		
 		try{
-			$this->query->execute();
-			$this->results = $this->query->fetchAll();
+			$this->query->execute($execute_data);
 		} catch(PDOException $e){
 			echo $e->getMessage();
 			return false;

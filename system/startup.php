@@ -1,10 +1,8 @@
 <?php
-	require_once('config.php'); // Config file
+	require_once('config.php');
 	ini_set("display_errors", ERROR_LEVEL);
 	error_reporting(E_ALL & ~E_NOTICE);
-	session_start();
 
-	//Engine
 	require_once('engine/cookie.php');
 	require_once('engine/user.php');
 	require_once('engine/language.php');
@@ -20,7 +18,7 @@
 	$cookie = new Cookie();
 	$request = new Request();
 	$response = new Response();
-	$load = new Load($request, $response);
+	$load = new Load($request, $response, $cookie);
 	$user = new User($load, $cookie);
 	$language = new Language($load);
 	$path = new Path($load, ROOT);
@@ -42,7 +40,4 @@
 			unlink($output);	
 		}		
 	}
-	
-
-
 ?>

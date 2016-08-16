@@ -2,9 +2,10 @@
 
 final class Load{
 
-	function __construct($request = '', $response = ''){
+	function __construct($request = '', $response = '', $cookie = ''){
 		$this->request = $request;
 		$this->response = $response;
+		$this->cookie = $cookie;
 	}
 	
 	public function Model($model, &$parentClass){
@@ -100,7 +101,7 @@ final class Load{
 
 	public function User(){
 		include_once('system/engine/user.php');
-		return new user(new Load);
+		return new user($this, $this->cookie);
 	}
 
 	public function Database($server='', $user='', $password='', $db=''){
