@@ -1,3 +1,3 @@
 <?php
-	require('system/init.php');
+	require('system/startup.php');
 ?>

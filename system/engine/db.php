@@ -55,8 +55,5 @@ class DB{
 			return false;
 		}
 	}
-
-
-
 }
 ?>
