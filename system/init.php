@@ -5,6 +5,7 @@
 	session_start();
 
 	//Engine
+	require_once('engine/cookie.php');
 	require_once('engine/user.php');
 	require_once('engine/language.php');
 	require_once('engine/path.php');
@@ -16,17 +17,18 @@
 	require_once('engine/model.php');
 	require_once('engine/theme.php');
 
+	$cookie = new Cookie();
+	$request = new Request();
+	$response = new Response();
 	$load = new Load($request, $response);
-	$user = new User($load);
+	$user = new User($load, $cookie);
 	$language = new Language($load);
 	$path = new Path($load, ROOT);
 	$theme = new Theme();
-	$request = new Request();
-	$response = new Response();
 	
 	$controller = $path->Get();
 	$$controller = new $controller($load, $request, $response, $theme);
-	$$controller->index();
+	$$controller->Index();
 
 	if($$controller->View()){
 		$extractVars = $$controller->data;
