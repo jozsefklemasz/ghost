@@ -5,12 +5,9 @@
 	define('DB_PASS', '');
 	define('DB_NAME', '');
 
-	//root page name
+	//This route will be used for the frontpage.
 	define('ROOT', 'example');
 
-	//System config
+	//System settings
 	define('ERROR_LEVEL', '1'); // 0 is disabled, use 1 for debugging
-
-	//Language
-	define('DEFAULT_LANGUAGE', 'en');
 ?>

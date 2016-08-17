@@ -19,7 +19,7 @@
 	$response = new Response();
 	$load = new Load($request, $response, $cookie);
 	$user = new User($load, $cookie);
-	$path = new Path($load, ROOT);
+	$path = new Path($load, ROOT, $request);
 	$theme = new Theme();
 	
 	$controller = $path->Get();
