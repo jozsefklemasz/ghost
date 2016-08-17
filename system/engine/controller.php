@@ -3,7 +3,7 @@
 class Controller
 {
 
-	protected $load, $user, $language, $request, $response, $error;
+	protected $load, $user, $request, $response, $error;
 	private $view;
 	public $data;
 	

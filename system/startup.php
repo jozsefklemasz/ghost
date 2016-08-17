@@ -5,7 +5,6 @@
 
 	require_once('engine/cookie.php');
 	require_once('engine/user.php');
-	require_once('engine/language.php');
 	require_once('engine/path.php');
 	require_once('engine/global_functions.php');
 	require_once('engine/load.php');
@@ -20,7 +19,6 @@
 	$response = new Response();
 	$load = new Load($request, $response, $cookie);
 	$user = new User($load, $cookie);
-	$language = new Language($load);
 	$path = new Path($load, ROOT);
 	$theme = new Theme();
 	

@@ -10,4 +10,7 @@
 
 	//System config
 	define('ERROR_LEVEL', '1'); // 0 is disabled, use 1 for debugging
+
+	//Language
+	define('DEFAULT_LANGUAGE', 'en');
 ?>
