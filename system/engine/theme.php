@@ -32,12 +32,12 @@ final class Theme{
 		}
 
 		return $this->CreateOutput($input);
-
 	}
 
 	private function GetBlockContent($block_name){
 		$block_path = 'mvc/view/theme/' . $this->current_theme . '/blocks/' . $block_name;
 		$block_content = file_get_contents($block_path);
+		
 		return $block_content;
 	}
 

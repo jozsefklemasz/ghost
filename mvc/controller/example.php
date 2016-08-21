@@ -6,7 +6,7 @@ class ExampleController extends Controller{
 		$this->response->SetOutput('example.tpl');
 		$this->load->model('example');
 
-		echo $this->examplemodel->Test();
+		$this->examplemodel->Test();
 	}
 
 }
