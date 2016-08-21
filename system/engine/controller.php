@@ -10,6 +10,7 @@ class Controller
 	function __construct($load, $request, $response, $theme = ''){
 		$this->error = false;
 		$this->load = $load;
+		$this->load->SetParentController($this);
 		$this->user = $this->load->user();
 		$this->request = $request;
 		$this->response = $response;

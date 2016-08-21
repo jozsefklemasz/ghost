@@ -2,13 +2,19 @@
 
 final class Load{
 
+	private $controller;
+
 	function __construct($request = '', $response = '', $cookie = ''){
 		$this->request = $request;
 		$this->response = $response;
 		$this->cookie = $cookie;
 	}
+
+	public function SetParentController(&$controller){
+		$this->controller = $controller;
+	}
 	
-	public function Model($model, &$parentClass){
+	public function Model($model){
 
 		$modelName = strtolower($model);
 		$modelClassName = $modelName . 'model';
@@ -16,10 +22,8 @@ final class Load{
 		$class = preg_replace('/[^a-zA-Z0-9]/', '', $modelClassName);
 		
 		if (file_exists($file)) { 
-
 			include_once($file);
-			$parentClass->$modelClassName = new $class(new Load);
-
+			$this->controller->$modelClassName = new $class(new Load);
 		} else {
 
 			trigger_error('Error: Could not load model ' . $model . '!');
