@@ -38,7 +38,5 @@ class Controller
 	public function GetView(){
 		return $this->response->ViewPath;
 	}
-
-
 }
 ?>
