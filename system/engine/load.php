@@ -26,7 +26,7 @@ final class Load{
 			$this->controller->$modelClassName = new $class(new Load);
 		} else {
 
-			trigger_error('Error: Could not load model ' . $model . '!');
+			trigger_error('Could not load model: ' . $model . '!');
 			exit();
 						
 		}

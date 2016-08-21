@@ -47,7 +47,7 @@ final class Theme{
 		try {
 			$this->WriteThemeFile($output_file_path, $content);
 		} catch (Exception $e) {
-			echo "Can't open theme file for writing, check permissions.";
+			echo $e->getmessage();
 			return false;
 		}
 
@@ -59,7 +59,7 @@ final class Theme{
 			fwrite($output_file,$content);
 			fclose($output_file);	
 		} else {
-			throw new Exception("Can't open theme file for writing.");
+			throw new Exception("Can't create theme file. Check the permissions of the system/temp folder!");
 		}
 		
 	}
@@ -69,5 +69,4 @@ final class Theme{
 		$random_sequence = rand(10000000,99999999);
 		return $time * $random_sequence;
 	}
-
 }
