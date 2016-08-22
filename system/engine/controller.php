@@ -2,9 +2,8 @@
 
 class Controller{
 
-	protected $load, $user, $request, $response, $error = false;
-	private $view = false;
-	public $data;
+	protected $load, $user, $request, $response, $error = false, $data;
+	private $view = true;
 	
 	function __construct($load, $request, $response, $theme = ''){
 		$this->load = $load;
@@ -16,6 +15,18 @@ class Controller{
 		if($theme){
 			$this->theme = $theme;
 		}
+	}
+
+	public function GetData(){
+		if(!empty($this->data)){
+			return $this->data;
+		} else {
+			return false;
+		}
+	}
+
+	private function DisableView(){
+		$this->view = false;
 	}
 
 	protected function Error(){

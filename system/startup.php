@@ -21,19 +21,18 @@
 	$path = new Path($load, ROOT, $request);
 	$theme = new Theme();
 	
-	$controller = $path->Get();
-	$$controller = new $controller($load, $request, $response, $theme);
-	$$controller->Index();
+	$controllerName = $path->Get();
+	$controller = new $controllerName($load, $request, $response, $theme);
+	$controller->Index();
 
-	if($$controller->View()){
-		$extractVars = $$controller->data;
-		if(!empty($extractVars)){
-			extract($extractVars);	
+	if($controller->View()){
+		if($extractableData = $controller->GetData()){
+			extract($extractableData);
 		}
-
-		$output = $theme->Parse($$controller->GetView());
+		
+		$output = $theme->Parse($controller->GetView());
 		if($output){
-			require($output);
+			require_once($output);
 			unlink($output);	
 		}		
 	}
