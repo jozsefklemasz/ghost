@@ -37,5 +37,4 @@ final class Response{
 	public function SetOutput($output){
 		$this->ViewPath = 'mvc/view/' . $output;
 	}
-
 }

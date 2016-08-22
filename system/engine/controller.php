@@ -13,7 +13,8 @@ class Controller{
 		$this->user = $this->load->user();
 		$this->request = $request;
 		$this->response = $response;
-		$this->view = True;
+		$this->view = false;
+
 		if($theme){
 			$this->theme = $theme;	
 		}
@@ -27,12 +28,8 @@ class Controller{
 		}
 	}
 
-	protected function DisableView(){
-		$this->view = False;
-	}
-
 	public function View(){
-		return $this->view;
+		return $this->view;	
 	}
 
 	public function GetView(){
