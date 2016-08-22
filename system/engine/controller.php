@@ -2,26 +2,24 @@
 
 class Controller{
 
-	protected $load, $user, $request, $response, $error;
-	private $view;
+	protected $load, $user, $request, $response, $error = false;
+	private $view = false;
 	public $data;
 	
 	function __construct($load, $request, $response, $theme = ''){
-		$this->error = false;
 		$this->load = $load;
 		$this->load->SetParentController($this);
 		$this->user = $this->load->user();
 		$this->request = $request;
 		$this->response = $response;
-		$this->view = false;
 
 		if($theme){
-			$this->theme = $theme;	
+			$this->theme = $theme;
 		}
 	}
 
 	protected function Error(){
-		if(isset($this->error) && $this->error){
+		if($this->error){
 			return true;
 		} else {
 			return false;
