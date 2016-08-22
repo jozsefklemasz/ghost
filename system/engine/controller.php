@@ -1,7 +1,6 @@
 <?php 
 
-class Controller
-{
+class Controller{
 
 	protected $load, $user, $request, $response, $error;
 	private $view;
