@@ -25,7 +25,7 @@ class Controller{
 		}
 	}
 
-	private function DisableView(){
+	public function DisableView(){
 		$this->view = false;
 	}
 

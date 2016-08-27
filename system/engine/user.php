@@ -37,8 +37,11 @@ class User{
 				$this->userId = $result[0]['user_id'];
 				$this->loggedin = true;
 				$this->cookie->Set('user_token', $hashedUserToken);
+
+				return true;
 			} else {
 				$this->loggedin = false;
+				return false;
 			}
 		}
 	}

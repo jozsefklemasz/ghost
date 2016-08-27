@@ -5,8 +5,10 @@
 	define('DB_PASS', '');
 	define('DB_NAME', '');
 
+	define('DB_DEBUG', true);
+
 	//This route will be used for the frontpage.
-	define('ROOT', 'example');
+	define('ROOT', 'home');
 
 	//System settings
 	define('ERROR_LEVEL', '1'); // 0 is disabled, use 1 for debugging

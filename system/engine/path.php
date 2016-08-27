@@ -4,7 +4,7 @@
 		
 		private $load, $user, $current, $request;
 
-		function __construct($loadl, $root = '', $request){
+		function __construct($loadl, $root = '', $request, $user){
 			$this->load = $load;
 			$this->user = $user;
 			$this->request = $request;

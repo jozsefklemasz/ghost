@@ -1,1 +1,1 @@
-<h3 align="center">404 - The page you are looking for does not exists!</h3>
+<h3 align="center">404</h3>

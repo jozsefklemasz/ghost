@@ -19,33 +19,48 @@ class DB{
 		}
 	}
 
+	function __destruct(){
+		$this->conn = null;
+		$this->query = null;
+	}
+
 	public function GetResults(){
-		$this->results = $this->query->fetchAll();
-		return $this->results;
+		if($this->query){
+			$this->results = $this->query->fetchAll();
+			return $this->results;
+		} else {
+			return false;
+		}
 	}
 
 	public function Prepare($sql){
-		try{
-			$this->query = $this->conn->prepare($sql);
-			$this->last_query = $sql;
-			return true;
-		} catch(PDOException $e){
-			echo $e->getMessage();
+		if($this->conn){
+			try{
+				$this->query = $this->conn->prepare($sql);
+				$this->last_query = $sql;
+				return true;
+			} catch(PDOException $e){
+				echo $e->getMessage();
+				return false;
+				die();
+			}
+		} else {
 			return false;
-			die();
 		}
 	}
 
 	public function Execute($execute_data = array()){
-		
-		try{
-			$this->query->execute($execute_data);
-		} catch(PDOException $e){
-			echo $e->getMessage();
+		if($this->query){
+			try{
+				$this->query->execute($execute_data);
+			} catch(PDOException $e){
+				echo $e->getMessage();
+				return false;
+				die();
+			}
+		} else {
 			return false;
-			die();
 		}
-
 	}
 
 	public function GetLastQuery(){

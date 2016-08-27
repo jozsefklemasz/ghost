@@ -18,7 +18,7 @@
 	$response = new Response();
 	$load = new Load($request, $response, $cookie);
 	$user = new User($load, $cookie);
-	$path = new Path($load, ROOT, $request);
+	$path = new Path($load, ROOT, $request, $user);
 	$theme = new Theme();
 	
 	$controllerName = $path->Get();

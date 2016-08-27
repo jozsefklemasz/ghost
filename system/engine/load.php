@@ -113,7 +113,7 @@ final class Load{
 		if($server!='' && $user!='' && $db!=''){
 			return new DB($server, $user, $password, $db);
 		} else {
-			return new DB(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+			return new DB(DB_SERVER, DB_USER, DB_PASS, DB_NAME, DB_DEBUG);
 		}
 	}
 	
