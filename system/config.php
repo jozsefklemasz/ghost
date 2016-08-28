@@ -5,7 +5,7 @@
 	define('DB_PASS', '');
 	define('DB_NAME', '');
 
-	define('DB_DEBUG', true);
+	define('DB_DEBUG', false);
 
 	//This route will be used for the frontpage.
 	define('ROOT', 'home');
