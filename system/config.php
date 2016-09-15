@@ -8,7 +8,7 @@
 	define('DB_DEBUG', false);
 
 	//This route will be used for the frontpage.
-	define('ROOT', 'home');
+	define('ROOT', 'default');
 
 	//System settings
 	define('ERROR_LEVEL', '1'); // 0 is disabled, use 1 for debugging

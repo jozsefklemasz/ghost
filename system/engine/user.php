@@ -21,7 +21,7 @@ class User{
 		}
 	}
 
-	public function Loggedin(){
+	public function LoggedIn(){
 		return $this->loggedin;
 	}
 

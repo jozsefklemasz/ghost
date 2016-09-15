@@ -11,7 +11,7 @@ Class Cookie{
 	public function Set($cookieName, $cookieValue, $expire = 0){
 		if($cookieName != '' && $cookieValue != ''){		
 			if(!$expire){
-				$expire = 60 * 60 * 24 * 7; //default expiration time: one week
+				$expire = 60 * 60 * 24 * 7;
 			}
 
 			setcookie($cookieName, $cookieValue, time() + $expire);

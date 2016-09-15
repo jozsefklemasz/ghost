@@ -3,15 +3,16 @@
 	ini_set("display_errors", ERROR_LEVEL);
 	error_reporting(E_ALL & ~E_NOTICE);
 
-	require_once('engine/cookie.php');
-	require_once('engine/user.php');
-	require_once('engine/path.php');
-	require_once('engine/load.php');
-	require_once('engine/request.php');
-	require_once('engine/response.php');
-	require_once('engine/controller.php');
-	require_once('engine/model.php');
-	require_once('engine/theme.php');
+	//Load framework files
+	require_once(__DIR__ . '/engine/cookie.php');
+	require_once(__DIR__ . '/engine/user.php');
+	require_once(__DIR__ . '/engine/path.php');
+	require_once(__DIR__ . '/engine/load.php');
+	require_once(__DIR__ . '/engine/request.php');
+	require_once(__DIR__ . '/engine/response.php');
+	require_once(__DIR__ . '/engine/controller.php');
+	require_once(__DIR__ . '/engine/model.php');
+	require_once(__DIR__ . '/engine/theme.php');
 
 	$cookie = new Cookie();
 	$request = new Request();
@@ -22,7 +23,7 @@
 	$theme = new Theme();
 	
 	$controllerName = $path->Get();
-	$controller = new $controllerName($load, $request, $response, $theme);
+	$controller = new $controllerName($load, $request, $response, $facebook, $theme);
 	$controller->Index();
 
 	if($controller->View()){

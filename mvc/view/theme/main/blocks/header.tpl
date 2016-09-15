@@ -20,7 +20,7 @@
 	
 	<!-- Custom CSS/JS files -->
 	<link rel="stylesheet" type="text/css" href="/mvc/view/theme/main/style/style.css">
-	<script type="text/javascript" src="/mvc/view/theme/main/js/common.js"></script>
+	<script type="text/javascript" src="/mvc/view/theme/main/js/sketch.js"></script>
 	<!-- Custom CSS/JS files end -->
 </head>
 <body>

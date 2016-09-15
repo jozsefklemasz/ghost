@@ -9,6 +9,7 @@
 			$this->user = $user;
 			$this->request = $request;
 
+
 			if(!($this->current = $this->request->get['p'])){
 				if($root != ''){
 					$this->current = $root;
@@ -16,6 +17,7 @@
 					$this->current = '404';
 				}
 			}
+			
 
 			$this->LoadCurrentController();
 		}

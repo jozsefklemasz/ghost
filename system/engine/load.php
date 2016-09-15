@@ -15,17 +15,26 @@ final class Load{
 	}
 	
 	public function Model($model){
-
 		$modelName = strtolower($model);
-		$modelClassName = $modelName . 'model';
 		$file  = 'mvc/model/' . $modelName . '.php';
-		$class = preg_replace('/[^a-zA-Z0-9]/', '', $modelClassName);
+
+		$pathArray = explode('/', $model);
+
+		if(empty($pathArray)){
+			$newModelName = $modelName;
+			$cleanModelName = $modelName;
+		} else {
+			$cleanModelName = end($pathArray);
+			$newModelName = implode('_', $pathArray);
+		}
 		
+		$originModelName = $cleanModelName . 'model';
+		$newModelName = preg_replace('/[^a-zA-Z0-9_]/', '', 'model_'.$newModelName);
+
 		if (file_exists($file)) { 
 			include_once($file);
-			$this->controller->$modelClassName = new $class(new Load);
+			$this->controller->$newModelName = new $originModelName(new Load);
 		} else {
-
 			trigger_error('Could not load model: ' . $model . '!');
 			exit();
 						
