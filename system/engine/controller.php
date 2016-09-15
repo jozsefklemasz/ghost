@@ -5,7 +5,7 @@ class Controller{
 	protected $load, $user, $request, $response, $error = false, $data;
 	private $view = true;
 	
-	function __construct($load, $request, $response, $facebook, $theme = ''){
+	function __construct($load, $request, $response, $theme = ''){
 		$this->load = $load;
 		$this->load->SetParentController($this);
 		$this->user = $this->load->user();
