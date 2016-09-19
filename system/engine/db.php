@@ -1,9 +1,12 @@
 <?php
-
-class DB{
+/**
+ * 
+ * @return PDO database handler
+ */
+final class DB{
 	
 	private $conn, $query, $results, $last_query;
-
+        
 	function __construct($server='', $user='', $pass='', $name=''){
 		if($server == '' || $user == '' || $pass == '' || $name == ''){
 			return false;

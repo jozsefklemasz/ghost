@@ -4,6 +4,12 @@ final class Load{
 
 	private $controller;
 
+	private $request;
+
+	private $response;
+
+	private $cookie;
+
 	function __construct($request = '', $response = '', $cookie = ''){
 		$this->request = $request;
 		$this->response = $response;

@@ -4,7 +4,7 @@
 	define('DB_USER', '');
 	define('DB_PASS', '');
 	define('DB_NAME', '');
-
+        
 	define('DB_DEBUG', false);
 
 	//This route will be used for the frontpage.
