@@ -1,12 +1,40 @@
 <?php
 /**
  * 
- * @return PDO database handler
+ * PDO database handler
  */
 final class DB{
-	
-	private $conn, $query, $results, $last_query;
+	/**
+         *
+         * @var PDO Connection;
+         */
+	private $conn;
         
+        /**
+         *
+         * @var PDO Current prepared query
+         */
+        private $query;
+        
+        /**
+         *
+         * @var PDO results
+         */
+        private $results;
+        
+        /**
+         *
+         * @var string Last query;
+         */
+        private $last_query;
+        
+        /**
+         * 
+         * @param string $server
+         * @param string $user
+         * @param string $pass
+         * @param string $name
+         */
 	function __construct($server='', $user='', $pass='', $name=''){
 		if($server == '' || $user == '' || $pass == '' || $name == ''){
 			return false;
@@ -27,6 +55,18 @@ final class DB{
 		$this->query = null;
 	}
 
+        /**
+         * Returns true if we are connected to the database
+         * @return boolean
+         */
+	public function Connected(){
+		return $this->connected;
+	}
+
+        /**
+         * Returns an array of results or false if there are no results
+         * @return array
+         */
 	public function GetResults(){
 		if($this->query){
 			$this->results = $this->query->fetchAll();
@@ -36,6 +76,11 @@ final class DB{
 		}
 	}
 
+        /**
+         * Prepares an sql query, returns false if the query was wrong
+         * @param string $sql
+         * @return boolean
+         */
 	public function Prepare($sql){
 		if($this->conn){
 			try{
@@ -51,7 +96,12 @@ final class DB{
 			return false;
 		}
 	}
-
+        
+        /**
+         * Tries to execute a query
+         * @param array $execute_data
+         * @return boolean
+         */
 	public function Execute($execute_data = array()){
 		if($this->query){
 			try{
@@ -65,7 +115,11 @@ final class DB{
 			return false;
 		}
 	}
-
+        
+        /**
+         * Returns the last query string, or false if there weren't any queries yet.
+         * @return boolean or string;
+         */
 	public function GetLastQuery(){
 		if($this->last_query != ''){
 			return $this->last_query;
