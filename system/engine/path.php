@@ -4,17 +4,22 @@
 		
 		private $load, $user, $current, $request;
 
-		function __construct($loadl, $root = '', $request, $user){
+		function __construct($load, $root = '', $request, $user){
 			$this->load = $load;
 			$this->user = $user;
 			$this->request = $request;
 
-
-			if(!($this->current = $this->request->get['p'])){
-				if($root != ''){
-					$this->current = $root;
-				} else {
-					$this->current = '404';
+			if(LOGIN_REQ){
+				if(LOGIN_ROUTE){
+					$this->current = LOGIN_ROUTE;
+				}
+			} else {
+				if(!($this->current = $this->request->get['p'])){
+					if($root != ''){
+						$this->current = $root;
+					} else {
+						$this->current = '404';
+					}
 				}
 			}
 			

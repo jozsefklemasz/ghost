@@ -1,7 +1,8 @@
 <?php
 	require_once('config.php');
-	ini_set("display_errors", ERROR_LEVEL);
-	error_reporting(E_ALL & ~E_NOTICE);
+
+	ini_set("display_errors",1);
+	error_reporting(E_ALL);
 
 	//Load framework files
 	require_once(__DIR__ . '/engine/cookie.php');
@@ -19,13 +20,13 @@
 	$response = new Response();
 	$load = new Load($request, $response, $cookie);
 	$user = new User($load, $cookie);
-	$path = new Path($load, ROOT, $request, $user);
+	$path = new Path($load, SITE_ROOT, $request, $user);
 	$theme = new Theme();
-	
+
 	$controllerName = $path->Get();
 	$controller = new $controllerName($load, $request, $response, $theme);
 	$controller->Index();
-
+	
 	if($controller->View()){
 		if($extractableData = $controller->GetData()){
 			extract($extractableData);
@@ -37,4 +38,5 @@
 			unlink($output);	
 		}		
 	}
+	
 ?>

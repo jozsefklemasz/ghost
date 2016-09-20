@@ -11,7 +11,6 @@ class Controller{
 		$this->user = $this->load->user();
 		$this->request = $request;
 		$this->response = $response;
-		$this->facebook = $facebook;
 	}
 
 	public function GetData(){

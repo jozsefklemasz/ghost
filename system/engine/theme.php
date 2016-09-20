@@ -4,7 +4,6 @@ final class Theme{
 	private $blocks_folder, $block_pattern, $current_theme;
 
 	function __construct(){
-		$this->title = SITENAME;
 		$this->current_theme = 'main';
 		$this->blocks_folder = 'mvc/view/theme/' . $this->current_theme . '/blocks/';
 	}
