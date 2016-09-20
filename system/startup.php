@@ -24,7 +24,7 @@
 	$theme = new Theme();
 
 	$controllerName = $path->Get();
-	$controller = new $controllerName($load, $request, $response, $theme);
+	$controller = new $controllerName($load, $request, $response, $cookie);
 	$controller->Index();
 	
 	if($controller->View()){

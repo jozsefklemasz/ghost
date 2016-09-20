@@ -5,12 +5,13 @@ class Controller{
 	protected $load, $user, $request, $response, $error = false, $data;
 	private $view = true;
 	
-	function __construct($load, $request, $response){
+	function __construct($load, $request, $response, $cookie){
 		$this->load = $load;
 		$this->load->SetParentController($this);
 		$this->user = $this->load->user();
 		$this->request = $request;
 		$this->response = $response;
+		$this->cookie = $cookie;
 	}
 
 	public function GetData(){
