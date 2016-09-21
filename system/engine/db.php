@@ -89,7 +89,6 @@ final class DB{
 				return true;
 			} catch(PDOException $e){
 				echo $e->getMessage();
-				return false;
 				die();
 			}
 		} else {
@@ -99,7 +98,7 @@ final class DB{
         
         /**
          * Tries to execute a query
-         * @param array $execute_data
+         * @param array $execute_data {':field_name' => 'field_value'}
          * @return boolean
          */
 	public function Execute($execute_data = array()){
@@ -108,7 +107,6 @@ final class DB{
 				$this->query->execute($execute_data);
 			} catch(PDOException $e){
 				echo $e->getMessage();
-				return false;
 				die();
 			}
 		} else {
@@ -128,4 +126,3 @@ final class DB{
 		}
 	}
 }
-?>

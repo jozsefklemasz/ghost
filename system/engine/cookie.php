@@ -68,8 +68,9 @@ final class Cookie{
 	private function UpdateCookies(){
 		$cookieList = array();
 		
-		if(!empty($_COOKIE)){
-			foreach ($_COOKIE as $key => $value) {
+		$filteredCookie = filter_input_array(INPUT_COOKIE, $_COOKIE);
+		if(!empty($filteredCookie)){
+			foreach ($filteredCookie as $key => $value) {
 				$cookieList[$key] = $value;
 			}
 

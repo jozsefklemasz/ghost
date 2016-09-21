@@ -42,4 +42,3 @@ class Controller{
 		return $this->response->ViewPath;
 	}
 }
-?>
