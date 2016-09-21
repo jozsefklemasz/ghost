@@ -13,7 +13,7 @@
 	require_once(__DIR__ . '/engine/response.php');
 	require_once(__DIR__ . '/engine/controller.php');
 	require_once(__DIR__ . '/engine/model.php');
-	require_once(__DIR__ . '/engine/theme.php');
+	require_once(__DIR__ . '/engine/view.php');
 
 	$cookie = new Cookie();
 	$request = new Request();
@@ -21,7 +21,7 @@
 	$load = new Load($request, $response, $cookie);
 	$user = new User($load, $cookie);
 	$path = new Path($load, SITE_ROOT, $request, $user);
-	$theme = new Theme();
+	$view = new View();
 
 	$controllerName = $path->Get();
 	$controller = new $controllerName($load, $request, $response, $cookie);
@@ -32,7 +32,7 @@
 			extract($extractableData);
 		}
 		
-		$output = $theme->Parse($controller->GetView());
+		$output = $view->Parse($controller->GetView());
 		if($output){
 			require_once($output);
 			unlink($output);	
