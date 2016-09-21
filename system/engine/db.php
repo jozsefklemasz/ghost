@@ -55,18 +55,18 @@ final class DB{
 		$this->query = null;
 	}
 
-        /**
-         * Returns true if we are connected to the database
-         * @return boolean
-         */
+    /**
+     * Returns true if we are connected to the database
+     * @return boolean
+     */
 	public function Connected(){
 		return $this->connected;
 	}
 
-        /**
-         * Returns an array of results or false if there are no results
-         * @return array
-         */
+    /**
+     * Returns an array of results or false if there are no results
+     * @return array
+     */
 	public function GetResults(){
 		if($this->query){
 			$this->results = $this->query->fetchAll();
@@ -76,11 +76,11 @@ final class DB{
 		}
 	}
 
-        /**
-         * Prepares an sql query, returns false if the query was wrong
-         * @param string $sql
-         * @return boolean
-         */
+    /**
+     * Prepares an sql query, returns false if the query was wrong
+     * @param string $sql
+     * @return boolean
+     */
 	public function Prepare($sql){
 		if($this->conn){
 			try{
@@ -96,11 +96,11 @@ final class DB{
 		}
 	}
         
-        /**
-         * Tries to execute a query
-         * @param array $execute_data {':field_name' => 'field_value'}
-         * @return boolean
-         */
+    /**
+     * Tries to execute a query
+     * @param array $execute_data {':field_name' => 'field_value'}
+     * @return boolean
+     */
 	public function Execute($execute_data = array()){
 		if($this->query){
 			try{
@@ -114,10 +114,10 @@ final class DB{
 		}
 	}
         
-        /**
-         * Returns the last query string, or false if there weren't any queries yet.
-         * @return boolean or string;
-         */
+    /**
+     * Returns the last query string, or false if there weren't any queries yet.
+     * @return boolean or string;
+     */
 	public function GetLastQuery(){
 		if($this->last_query != ''){
 			return $this->last_query;
