@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $title ?></title>
+	<title></title>
 	<meta charset="UTF-8">
   	<link href="/mvc/view/theme/main/style/images/favicon.png" rel="icon" />
 	

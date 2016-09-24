@@ -5,45 +5,58 @@
  */
 final class DB{
 	/**
-         *
-         * @var PDO Connection;
-         */
+     *
+     * @var PDO Connection;
+     */
 	private $conn;
         
-        /**
-         *
-         * @var PDO Current prepared query
-         */
-        private $query;
-        
-        /**
-         *
-         * @var PDO results
-         */
-        private $results;
-        
-        /**
-         *
-         * @var string Last query;
-         */
-        private $last_query;
-        
-        /**
-         * 
-         * @param string $server
-         * @param string $user
-         * @param string $pass
-         * @param string $name
-         */
+    /**
+     *
+     * @var PDO Current prepared query
+     */
+    private $query;
+    
+    /**
+     *
+     * @var PDO results
+     */
+    private $results;
+    
+    /**
+     *
+     * @var string Last query;
+     */
+    private $last_query;
+
+    /**
+     *
+     * @var boolean Connection status
+     */
+    private $connected = false;
+    
+    /**
+     * 
+     * @param string $server
+     * @param string $user
+     * @param string $pass
+     * @param string $name
+     */
+    private $server, $user, $pass, $name;
 	function __construct($server='', $user='', $pass='', $name=''){
 		if($server == '' || $user == '' || $pass == '' || $name == ''){
 			return false;
 		}
 
+		$this->server = $server;
+		$this->user = $user;
+		$this->pass = $pass;
+		$this->name = $name;
+
 		try{
-			$db_details = 'mysql:host=' . $server . ';dbname=' . $name . ';charset=utf8';
-			$this->conn = new PDO($db_details, $user, $pass);
+			$db_details = 'mysql:host=' . $this->server . ';dbname=' . $this->name . ';charset=utf8';
+			$this->conn = new PDO($db_details, $this->user, $this->pass);
 			$this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$this->connected = true;
 		} catch(PDOException $e){
 			echo $e->getMessage();
 			die();
@@ -121,6 +134,22 @@ final class DB{
 	public function GetLastQuery(){
 		if($this->last_query != ''){
 			return $this->last_query;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 *
+	 * Sets the database collation to utf8
+	 */
+	public function SetCollation(){
+		if($this->Connected()){
+			$sql = "ALTER DATABASE " . $this->name . " CHARACTER SET utf8 COLLATE utf8_unicode_ci";
+			
+			$this->Prepare($sql);
+			$this->Execute();
+			return true;
 		} else {
 			return false;
 		}

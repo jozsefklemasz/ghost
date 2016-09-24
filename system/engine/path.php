@@ -36,7 +36,7 @@
 		}
 
 		public function Get(){
-			return $this->current . 'Controller';
+			return str_replace('-', '', $this->current . 'Controller');
 		}
 
 	}
