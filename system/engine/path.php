@@ -9,7 +9,7 @@
 			$this->user = $user;
 			$this->request = $request;
 
-			if(LOGIN_REQ){
+			if(LOGIN_REQ && !$this->user->LoggedIn()){
 				if(LOGIN_ROUTE){
 					$this->current = LOGIN_ROUTE;
 				}
