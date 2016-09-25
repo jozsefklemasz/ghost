@@ -1,7 +1,7 @@
 <?php
 	require_once('config.php');
 
-	ini_set("display_errors",0);
+	ini_set("display_errors", ERROR_LEVEL);
 	error_reporting(E_ALL);
 
 	//Load framework files
