@@ -64,7 +64,7 @@ final class Load{
 		if (file_exists($file)) { 
 
 			include_once($file);
-			$modular_controller = new $class(new Load($this->request, $this->response, $this->cookie), $this->request, $this->response);
+			$modular_controller = new $class($this, $this->request, $this->response, $this->cookie);
 			$modular_controller->index();
 
 			if($modular_controller->View()){
