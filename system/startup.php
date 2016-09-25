@@ -38,5 +38,3 @@
 			unlink($output);	
 		}		
 	}
-	
-?>

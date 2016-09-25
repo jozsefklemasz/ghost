@@ -84,8 +84,9 @@ final class Cookie{
 	* Destroys every cookie
 	*/
 	public function Clean(){
-		if(!empty($_COOKIE)){
-			foreach ($_COOKIE as $key => $value) {
+                $cookie = filter_input_array(INPUT_COOKIE, $_COOKIE);
+		if(!empty($cookie)){
+			foreach ($cookie as $key => $value) {
 				setcookie($key, '', 1);
 			}
 		}

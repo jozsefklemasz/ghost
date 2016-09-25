@@ -57,8 +57,8 @@ final class Load{
 		if(empty($c_arr)){
 			$class = preg_replace('/[^a-zA-Z0-9]/', '', $controller . 'controller');
 		} else {
-			$class = end($c_arr);
-			$class = preg_replace('/[^a-zA-Z0-9]/', '', $class . 'controller');
+			$last_item = end($c_arr);
+			$class = preg_replace('/[^a-zA-Z0-9]/', '', $last_item . 'controller');
 		}
 
 		if (file_exists($file)) { 
@@ -86,36 +86,6 @@ final class Load{
 						
 		}
 
-	}
-
-	public function Language($file){
-		if(isset($_SESSION['language'])){
-			if($_SESSION['language'] != 'en'){
-				$file_en = 'mvc/language/en/' . strtolower($file) . '.php';	
-			}
-			$file = 'mvc/language/' . $_SESSION['language'] . '/' . strtolower($file) . '.php';	
-			if(file_exists($file)){
-				include_once($file);
-				return $language;
-			} else {
-				if(file_exists($file_en)){
-					include_once($file_en);
-					return $language;
-				} else {
-					echo 'Cannot load language: ' . $file;
-					exit;
-				}
-			}
-		} else {
-			$file_en = 'mvc/language/en/' . strtolower($file) . '.php';
-			if(file_exists($file_en)){
-				include_once($file_en);
-				return $language;
-			} else {
-				echo 'Cannot load language: ' . $file;
-				exit;
-			}
-		}
 	}
 
 	public function User(){
