@@ -27,7 +27,7 @@ final class Cookie{
 				$expire = 60 * 60 * 24 * 7;
 			}
 
-			setcookie($cookieName, $cookieValue, time() + $expire);
+			setcookie($cookieName, $cookieValue, time() + $expire, '/');
 		} 
 
 		$this->UpdateCookies();

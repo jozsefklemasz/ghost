@@ -2,7 +2,7 @@
 	require_once('config.php');
 
 	ini_set("display_errors", ERROR_LEVEL);
-	error_reporting(E_ALL);
+	error_reporting(E_ALL & ~E_NOTICE);
 
 	//Load framework files
 	require_once(__DIR__ . '/engine/cookie.php');

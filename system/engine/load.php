@@ -19,6 +19,37 @@ final class Load{
 	public function SetParentController(&$controller){
 		$this->controller = $controller;
 	}
+
+
+	public function Language($file){
+		if($language = $this->cookie->Get('language')){
+			if($language != 'en'){
+				$file_en = 'mvc/language/en/' . strtolower($file) . '.php';	
+			}
+			$file = 'mvc/language/' . $language . '/' . strtolower($file) . '.php';	
+			if(file_exists($file)){
+				include_once($file);
+				return $language;
+			} else {
+				if(file_exists($file_en)){
+					include_once($file_en);
+					return $language;
+				} else {
+					echo 'Cannot load language: ' . $file;
+					exit;
+				}
+			}
+		} else {
+			$file_en = 'mvc/language/en/' . strtolower($file) . '.php';
+			if(file_exists($file_en)){
+				include_once($file_en);
+				return $language;
+			} else {
+				echo 'Cannot load language: ' . $file;
+				exit;
+			}
+		}
+	}
 	
 	public function Model($model){
 		$modelName = strtolower($model);
@@ -68,13 +99,14 @@ final class Load{
 			$modular_controller->index();
 
 			if($modular_controller->View()){
-				$modular_vars = $modular_controller->data;
+				ob_start();
+				$modular_vars = $modular_controller->GetData();
 				if(!empty($modular_vars)){
 					extract($modular_vars);	
 				}
 
-				$output = require($modular_controller->GetView());
-				return $output;
+				require($modular_controller->GetView());
+				return ob_get_clean();
 			}
 
 			return $modular_controller->GetView();
@@ -103,4 +135,3 @@ final class Load{
 	}
 	
 }
-?>
