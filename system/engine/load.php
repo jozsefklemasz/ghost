@@ -80,7 +80,6 @@ final class Load{
 	}
 
 	public function Controller($controller){
-
 		$file = 'mvc/controller/' . strtolower($controller) . '.php';
 
 		$c_arr = explode('/', $controller);

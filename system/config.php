@@ -11,6 +11,8 @@
 	define('LOGIN_REQ', false); // if true, authentication required
 	define('LOGIN_ROUTE', 'login'); // if authentication is required, this will be the site root
 	define('SITE_ROOT', 'default'); // this will load after authentication
+
+	define('SUBDIR', '/ghost'); // no trailing slash!
 	
 
 	//System settings

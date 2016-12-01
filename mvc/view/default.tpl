@@ -1,2 +1,2 @@
-{header}
-{footer}
+<?php echo $header; ?>
+<?php echo $footer; ?>
