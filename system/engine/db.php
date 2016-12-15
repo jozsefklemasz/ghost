@@ -59,6 +59,7 @@ final class DB{
 			$this->connected = true;
 		} catch(PDOException $e){
 			echo $e->getMessage();
+			echo Ghost::PrintTrace(debug_backtrace());
 			die();
 		}
 	}
@@ -102,6 +103,7 @@ final class DB{
 				return true;
 			} catch(PDOException $e){
 				echo $e->getMessage();
+				echo Ghost::PrintTrace(debug_backtrace());
 				die();
 			}
 		} else {
@@ -119,7 +121,8 @@ final class DB{
 			try{
 				$this->query->execute($execute_data);
 			} catch(PDOException $e){
-				echo $e->getMessage();
+				echo $e->getMessage() . '<br/>';
+				echo Ghost::PrintTrace(debug_backtrace());
 				die();
 			}
 		} else {

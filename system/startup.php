@@ -6,6 +6,7 @@ ini_set("display_errors", ERROR_LEVEL);
 error_reporting(E_ALL & ~E_NOTICE);
 
 //Load framework files
+require_once(__DIR__ . '/engine/global_functions.php');
 require_once(__DIR__ . '/engine/cookie.php');
 require_once(__DIR__ . '/engine/user.php');
 require_once(__DIR__ . '/engine/path.php');

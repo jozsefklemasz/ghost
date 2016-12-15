@@ -19,9 +19,7 @@ class InstallModel extends Model{
 				return 'Could not create user table!';
 			}
 
-			$sql = "CREATE TABLE user_token (user_token text,
-			user_id int NOT NULL,
-			primary key(user_id))";
+			$sql = "CREATE TABLE user_token (user_token text, user_id int NOT NULL)";
 			if($this->db->Prepare($sql)){
 				$this->db->Execute();
 			} else {

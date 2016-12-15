@@ -1,3 +1,3 @@
-{header}
+<?php echo $header ?>
 <?php echo $message; ?>
-{footer}
+<?php echo $footer ?>

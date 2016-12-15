@@ -2,14 +2,14 @@
 
 class User{
 	
-	private $loggedin, $userId, $db, $user, $load;
+	private $loggedin, $userId, $db, $user, $load, $userToken;
 
 	function __construct($load, $cookie){
 		$this->load = $load;
 		$this->db = $this->load->database();
 		$this->cookie = $cookie;
 
-		if($userToken = $this->cookie->Get('user_token')){
+		if($this->userToken = $this->cookie->Get('user_token')){
 			if($userId = $this->ValidateCookieData($userToken)){
 				$this->userId = $userId;
 				$this->loggedin = true;	
@@ -19,6 +19,14 @@ class User{
 		} else {
 			$this->loggedin = false;
 		}
+	}
+
+	public function Create($username, $password)
+	{	
+		$password = $this->HashPassword($password);
+		$sql = "INSERT INTO user VALUES(NULL, :username, :password)";
+		$this->db->Prepare($sql);
+		$this->db->Execute([':username'=>$username, ':password'=>$password]);
 	}
 
 	public function LoggedIn(){
@@ -71,11 +79,15 @@ class User{
 
 	public function Logout(){
 		if($this->userId){
-			$sql = "DELETE FROM user_token WHERE user_id=:user_id";
+			$sql = "DELETE FROM user_token WHERE user_id=:user_id AND user_token=:user_token";
+			
 			$this->db->Prepare($sql);
-			$this->db->Execute([':user_id' => $this->userId]);
+			$this->db->Execute([':user_id' => $this->userId, ':user_token' => $this->userToken]);
+
+			$this->cookie->Delete('user_token');
 		}
 	}
+
 }
 
 ?>
